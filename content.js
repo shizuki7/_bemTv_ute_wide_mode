@@ -69,13 +69,13 @@ function applyWideTheaterStyle() {
     document.head.appendChild(style);
   }
   style.textContent = `
-    .com-application-SideNavigation--closed { display: none !important; }
+    .com-application-SideNavigation { display: none !important; }
     .c-common-HeaderContainer-header { opacity: 0 !important; display: none !important; }
     .com-vod-VODResponsiveMainContent__inner { width: 100% !important; max-width: calc(100vh * 16 / 9) !important; }
     .com-vod-VODResponsiveMainContent { margin-top: 0 !important; }
     .c-video-EpisodeContainerView-breadcrumb { display: none !important; }
     .c-tv-TimeshiftSlotContainerView-breadcrumb { display: none !important; }
-    body:has(.com-vod-VODMiniPlayerWrapper__player--bg-mini) .com-application-SideNavigation--closed { display: block !important; }
+    body:has(.com-vod-VODMiniPlayerWrapper__player--bg-mini) .com-application-SideNavigation { display: block !important; }
     body:has(.com-vod-VODMiniPlayerWrapper__player--bg-mini) .c-common-HeaderContainer-header { opacity: 1 !important; display: revert !important; }
   `;
   debugLog("ワイドシアターCSS 適用");
