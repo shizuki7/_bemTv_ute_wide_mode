@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "ABEMA Auto Wide",
+  "version": "0.3.0",
+  "description": "ABEMAの動画プレイヤーを自動でワイド表示に切り替えます",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.abema.tv/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
