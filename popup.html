@@ -1,83 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      width: 260px;
-      padding: 16px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 14px;
-      color: #222;
-    }
-    h1 {
-      font-size: 13px;
-      font-weight: 600;
-      color: #888;
-      letter-spacing: 0.05em;
-      margin-bottom: 14px;
-    }
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-    .toggle { position: relative; display: inline-block; width: 42px; height: 24px; }
-    .toggle input { opacity: 0; width: 0; height: 0; }
-    .slider {
-      position: absolute; inset: 0;
-      background: #ccc;
-      border-radius: 24px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .slider::before {
-      content: "";
-      position: absolute;
-      width: 18px; height: 18px;
-      left: 3px; bottom: 3px;
-      background: #fff;
-      border-radius: 50%;
-      transition: transform 0.2s;
-    }
-    input:checked + .slider { background: #00bcd4; }
-    input:checked + .slider::before { transform: translateX(18px); }
-    .mode-group { display: flex; gap: 6px; }
-    .mode-btn {
-      flex: 1;
-      padding: 5px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: #f5f5f5;
-      cursor: pointer;
-      font-size: 12px;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-    }
-    .mode-btn.active {
-      background: #00bcd4;
-      border-color: #00bcd4;
-      color: #fff;
-    }
-  </style>
-</head>
-<body>
-  <h1>ABEMA AUTO WIDE</h1>
-  <div class="row">
-    <label for="enabled">有効</label>
-    <label class="toggle">
-      <input type="checkbox" id="enabled">
-      <span class="slider"></span>
-    </label>
-  </div>
-  <div class="row">
-    <span>表示モード</span>
-    <div class="mode-group">
-      <button class="mode-btn" data-mode="wide">ワイド</button>
-      <button class="mode-btn" data-mode="widetheatre">ワイドシアター</button>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 260px;
+        padding: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 14px;
+        color: #2d3440;
+        background: #fbf8ff;
+      }
+      h1 {
+        font-size: 13px;
+        font-weight: 600;
+        color: #8b7ca8;
+        letter-spacing: 0.05em;
+        margin-bottom: 14px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        margin-bottom: 14px;
+        min-height: 32px;
+      }
+      .primary-row {
+        border: 1px solid #b7e4dc;
+        border-radius: 6px;
+        background: #edf9f6;
+      }
+      .primary-row label:first-child {
+        font-size: 15px;
+        font-weight: 700;
+        color: #263c3a;
+      }
+      .toggle {
+        position: relative;
+        display: inline-block;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 24px;
+      }
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        inset: 0;
+        background: #d5cfdf;
+        border-radius: 24px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .slider::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        left: 3px;
+        bottom: 3px;
+        background: #fff;
+        border-radius: 50%;
+        transition: transform 0.2s;
+      }
+      input:checked + .slider {
+        background: #8bcfc3;
+      }
+      .toggle--lavender input:checked + .slider {
+        background: #c6b8ee;
+      }
+      input:checked + .slider::before {
+        transform: translateX(18px);
+      }
+      .mode-group {
+        display: flex;
+        gap: 6px;
+        width: 120px;
+        height: 38px;
+      }
+      .mode-btn {
+        flex: 1;
+        padding: 5px 0;
+        border: 1px solid #d8cfe6;
+        border-radius: 4px;
+        background: #fffaff;
+        cursor: pointer;
+        font-size: 12px;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s;
+      }
+      .mode-btn.active {
+        background: #b9a7e8;
+        border-color: #b9a7e8;
+        color: #fff;
+      }
+      .note {
+        margin: -6px 0 14px;
+        color: #746b80;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #ece7f4;
+          background: #23202b;
+        }
+        h1 {
+          color: #b8abc9;
+        }
+        .primary-row {
+          border-color: #5a7f78;
+          background: #223633;
+        }
+        .primary-row label:first-child {
+          color: #fff;
+        }
+        .slider {
+          background: #5a5268;
+        }
+        .toggle--lavender input:checked + .slider {
+          background: #ab9bdc;
+        }
+        .mode-btn {
+          border-color: #5a5268;
+          background: #302b3a;
+          color: #ece7f4;
+        }
+        .mode-btn.active {
+          background: #9f8fd0;
+          border-color: #9f8fd0;
+          color: #fff;
+        }
+        .note {
+          color: #c7bfd4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ABEMA PLAYER PLUS</h1>
+    <div class="row primary-row">
+      <label for="enabled">有効</label>
+      <label class="toggle">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
     </div>
-  </div>
-  <script src="popup.js"></script>
-</body>
+    <div class="row">
+      <span>ワイド表示</span>
+      <div class="mode-group">
+        <button class="mode-btn" data-mode="wide">標準</button>
+        <button class="mode-btn" data-mode="widetheatre">シアター</button>
+      </div>
+    </div>
+    <div style="margin-bottom: 0" class="row">
+      <label for="pseudo-fullscreen-enabled">擬似全画面モード</label>
+      <label class="toggle toggle--lavender">
+        <input type="checkbox" id="pseudo-fullscreen-enabled" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <p class="note">
+      ⚠️ Google Chrome 以外の Chromium
+      系ブラウザでは、ウィンドウ内全画面になる場合があります。必要に応じてブラウザ側で手動フルスクリーンにしてください。
+    </p>
+    <script src="popup.js"></script>
+  </body>
 </html>
