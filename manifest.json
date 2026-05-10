@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "ABEMA_Player_Plus",
-  "version": "0.3.0",
+  "name": "Abema_Player_Plus",
+  "version": "0.5.0",
   "description": "ABEMAの動画プレイヤーのワイド表示や擬似全画面を補助します",
   "permissions": ["storage", "windows"],
   "content_scripts": [
